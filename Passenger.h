@@ -19,13 +19,12 @@ protected:
 
 public:
 	Passenger();
-	Passenger();
 	Passenger(string first_name, string second_name);
 	string getFirstName()const;
 	string getSecondName()const;
 	void setFirstName(string first_name);
 	void setSecondName(string second_name);
-	void info();
+	void info() const;
 	~Passenger();
 };
 
