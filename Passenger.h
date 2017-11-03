@@ -26,6 +26,8 @@ public:
 	void setSecondName(string second_name);
 	void info() const;
 	~Passenger();
+	friend ostream& operator << (ostream& os, Passenger& passenger);
+	friend istream& operator >> (istream& os, Passenger& passenger);
 };
 
 

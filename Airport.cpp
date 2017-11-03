@@ -34,7 +34,11 @@ string Airport::get_city() const
 {
 	return city;
 }
-
+istream& operator >> (istream& is, Airport& airport)
+{
+	is >> airport.name >> airport.city;
+	return is;
+}
 //void info() const;
 Airport::~Airport()
 {

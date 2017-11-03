@@ -1,22 +1,22 @@
 
 #include "Place.h"
 #include <string>
-Place::Place() : place_number("..."),isfree(0){
+Place::Place() : place_number(0),isfree(0){
 
 }
 
-Place::Place(string _place_number, bool _isfree) {
+Place::Place(int _place_number, bool _isfree) {
 	place_number = _place_number;
 	isfree = _isfree;
 	if (isfree)
 		passenger = Passenger();
 }
 
-string Place::getPlace_number() const {
+int Place::getPlace_number() const {
 	return place_number;
 }
 
-void Place::setPlace_nubmer(string _place_number) {
+void Place::setPlace_number(int _place_number) {
 	place_number = _place_number;
 }
 
@@ -34,7 +34,19 @@ void Place::isPassenger() const {
 	else
 		cout << "\nEMPTY";
 }
-
+void Place::set_passenger(string _name, string _surname)
+{
+	if (_name != "")
+	{
+		isfree = true;
+	}
+	else
+	{
+		isfree = false;
+	}
+	this->passenger.setFirstName(_name);
+	this->passenger.setSecondName(_surname);
+}
 void Place::info() const {
 	cout << place_number <<" : ";
 	if (isfree)	cout << "free" << endl;
@@ -43,4 +55,15 @@ void Place::info() const {
 }
 
 Place::~Place() {
+}
+ostream& operator << (ostream& os, Place& place)
+{
+	os << place.place_number << ' ' << place.isfree << ' ' << place.passenger;
+	return os;
+}
+
+istream& operator >> (istream& is, Place &place)
+{
+	is >> place.place_number >> place.isfree;
+	return is;
 }

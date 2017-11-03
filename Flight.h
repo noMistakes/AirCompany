@@ -12,22 +12,25 @@
 class Flight
 {
 protected:
-	Airport first_airport;
-	Airport  second_airport;
+	string first_airport;
+	string second_airport;
 	string time_start;
 	string time_end;
-	Plane plane_name;
+	Plane plane;
 
 public:
 	Flight();
-	Flight(Airport air_start, Airport air_end, Plane _plane, string time_start, string time_end);
-	Airport getFirstairport() const;
-	Airport getSecondairport() const;
+	Flight(string _Place_of_departure, string _Place_of_landing, string _Departure_time, string _Arrival_time, string _airplane_number, int _number_of_places);
+	void set_plane(string _airplane_number, int _number_of_places);
+	string getFirstAirport() const;
+	string getSecondAirport() const;
 	string getTimeStart() const;
 	string getTimeEnd() const;
 	Plane getPlaneName() const;
 	void info() const;
+	void write_out()const;
 	~Flight();
+	friend istream& operator >> (istream& os, Flight& flight);
 };
 
 

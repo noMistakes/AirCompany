@@ -16,6 +16,6 @@ public:
 	void set_city(string _city);
 	string get_name() const;
 	string get_city() const;
-
+	friend istream& operator >> (istream& os, Airport& airport);
 	~Airport();
 };

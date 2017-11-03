@@ -16,6 +16,10 @@ void Passenger::setFirstName(string _first_name) {
 string Passenger::getFirstName() const {
 	return first_name;
 }
+string Passenger::getSecondName() const
+{
+	return second_name;
+}
 void Passenger::setSecondName(string _second_name) {
 	second_name = _second_name;
 }
@@ -27,4 +31,15 @@ void Passenger::info() const {
 }
 
 Passenger::~Passenger() {
+}
+ostream& operator << (ostream& os, Passenger& passenger)
+{
+	os << passenger.first_name << ' ' << passenger.second_name;
+	return os;
+}
+
+istream& operator >> (istream& is, Passenger& passenger)
+{
+	is >> passenger.first_name >> passenger.second_name;
+	return is;
 }

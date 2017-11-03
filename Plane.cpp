@@ -16,7 +16,7 @@ Plane::Plane(int _number_of_places, string _airplane_number)
 	places = new Place[number_of_places];
 	for (int i = 0; i < number_of_places; i++)
 	{
-		places[i].set_number(i);
+		places[i].setPlace_number(i);
 	}
 }
 
@@ -28,7 +28,7 @@ void Plane::set_number_of_places(int _number_of_places)
 		places = new Place[number_of_places];
 		for (int i = 0; i < number_of_places; i++)
 		{
-			places[i].set_number(i);
+			places[i].setPlace_number(i);
 		}
 	}
 }
@@ -66,7 +66,7 @@ void Plane::get_free_places() const
 {
 	for (int i = 0; i < number_of_places; i++)
 	{
-		if (places[i].get_status() == false)
+		if (places[i].getIsFree() == false)
 		{
 			cout << places[i] << endl;
 		}
@@ -91,7 +91,7 @@ void Plane::write_plane()const
 
 bool Plane::check_place(int number)
 {
-	if (places[number].get_status())
+	if (places[number].getIsFree())
 	{
 		return true;
 	}
@@ -130,4 +130,11 @@ Plane::~Plane()
 	delete[] places;
 }
 
+istream& operator >> (istream& os, Plane& plane)
+{
+	os >> plane.airplane_number >> plane.number_of_places;
+	plane.set_number_of_places(plane.number_of_places);
+	plane.info();
+	return os;
+}
 

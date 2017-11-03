@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Place.h"
 
 using namespace std;
 class Plane
 {
 protected:
+	Place* places;
 	int number_of_places;
 	string airplane_number;
 public:
@@ -23,6 +25,7 @@ public:
 	void write_plane()const;
 	void read_plane(string _airlane_number);
 	void info() const;
+	friend istream& operator >> (istream& os, Plane& plane);
 
 	~Plane();
 };
